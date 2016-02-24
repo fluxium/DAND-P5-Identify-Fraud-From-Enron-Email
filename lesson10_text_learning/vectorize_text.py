@@ -53,7 +53,8 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             ### ["sara", "shackleton", "chris", "germani"]
             # http://stackoverflow.com/questions/6116978/python-replace-multiple-strings
             rep = {"sara": "", "shackleton": "", 
-                   "chris": "", "germani": ""} 
+                   "chris": "", "germani": "",
+                   "sshacklensf" : "", "cgermannsf" : ""} 
             
             rep = dict((re.escape(k), v) for k, v in rep.iteritems())
             pattern = re.compile("|".join(rep.keys()))
