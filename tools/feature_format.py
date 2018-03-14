@@ -67,7 +67,7 @@ def featureFormat( dictionary, features, remove_NaN=True, remove_all_zeroes=True
             try:
                 dictionary[key][feature]
             except KeyError:
-                print "error: key ", feature, " not present"
+                print("error: key ", feature, " not present")
                 return
             value = dictionary[key][feature]
             if value=="NaN" and remove_NaN:
@@ -120,8 +120,8 @@ def targetFeatureSplit( data ):
     for item in data:
         target.append( item[0] )
         features.append( item[1:] )
-
-    return target, features
+    # changing output of this function to np.array()
+    return np.array(target), np.array(features)
 
 
 

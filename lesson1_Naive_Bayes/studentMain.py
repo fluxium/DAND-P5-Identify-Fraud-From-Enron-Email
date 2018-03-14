@@ -7,6 +7,8 @@
     boundary found in the lesson video, and make a plot that
     visually shows the decision boundary """
 
+import sys
+sys.path.append("../tools/")
 
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture, output_image

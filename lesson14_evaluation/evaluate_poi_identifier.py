@@ -16,10 +16,10 @@ import sys
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
 
-data_dict = pickle.load(open("../lesson15_final_project/final_project_dataset.pkl", "r") )
+data_dict = pickle.load(open("../lesson15_final_project/final_project_dataset.pkl", "rb") )
 
 ### add more features to features_list!
-features_list = ["poi", "salary"]
+features_list = ["poi", "salary", "exercised_stock_options"]
 
 data = featureFormat(data_dict, features_list)
 labels, features = targetFeatureSplit(data)
@@ -42,10 +42,10 @@ cross_validation.train_test_split(features,
 clf = DecisionTreeClassifier()
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
-print accuracy_score(labels_test, pred)
-print precision_score(labels_test, pred)
-print recall_score(labels_test, pred)
+print(accuracy_score(labels_test, pred))
+print(precision_score(labels_test, pred))
+print(recall_score(labels_test, pred))
 
 for i in range(0, len(pred)):
     if pred[i] == 1.0 and pred[i] == labels_test[i]:
-        print "True Positive" + str(i)
+        print("True Positive {}".format(str(i)))
