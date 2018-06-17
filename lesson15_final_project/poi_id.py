@@ -56,12 +56,19 @@ with open("final_project_dataset.pkl", "rb") as data_file:
 ### Task 2 (reordered for my analysis): Remove outliers
 data_dict.pop('TOTAL', 0)
 
+# exercised_stock_options has the smallest p-value
+compare_pois(data_dict)
+
 ### Task 3 (reordered for my analysis): Create new feature(s)
 ### Store to my_dataset for easy export below.
-my_dataset = data_dict
 
-# exercised_stock_options has the smallest pvalue
-compare_pois(my_dataset)
+# Changing dataset structure from dict of dicts to list of dicts
+temp_data = list(data_dict.values())
+
+temp_data = list(map(lambda item: dict(item, to_poi_ratio = (float(item['from_this_person_to_poi']) / float(item['to_messages']))), temp_data))
+temp_data = list(map(lambda item: dict(item, from_poi_ratio = (float(item['from_poi_to_this_person']) / float(item['from_messages']))), temp_data))
+
+my_dataset = temp_data
 
 ### Task 1: Select what features you'll use.
 ### features_list is a list of strings, each of which is a feature name.
